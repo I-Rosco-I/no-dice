@@ -1,10 +1,14 @@
 import random
 from no_dice_questions import answers, equations_answers
 
-class Questions:
-    def __init__(self, question, answer):
-        self.question = question
-        self.answer = answer
+def player_turn():
+    print("Are you ready to roll?")
+    player_ready = input()
+
+    if player_ready == "no":
+        print("Then take a shot, and play anyway!")
+        
+    print(roll_dice(random.randint(1, 6)))
 
 def roll_dice(random_number):
     
@@ -66,4 +70,4 @@ def roll_dice(random_number):
         Random game! """ + roll_dice(random.randint(1,5))
         
 
-print(roll_dice(random.randint(1, 6)))
+player_turn()
