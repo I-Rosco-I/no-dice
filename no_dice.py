@@ -7,8 +7,8 @@ def player_turn():
 
     if player_ready == "no":
         print("Then take a shot, and play anyway!")
-        
-    print(roll_dice(random.randint(1, 6)))
+
+    roll_dice(random.randint(1, 6))
 
 def roll_dice(random_number):
     
@@ -21,53 +21,69 @@ def roll_dice(random_number):
     ]
 
     if random_number == 1:
-        return """
+        print("""
         ###########
         |         |
         |    *    |
         |         |  
-        ########### """ + games[0]
+        ########### """ + games[0])
         
     if random_number == 2:
-        return """
+        question_answer = random.choice(answers)
+        print("""
         ###########
         |  *      |
         |         |
         |      *  |  
-        ########### """ + games[1] + "\n" + random.choice(answers).question
+        ########### """ + games[1] + "\n" + question_answer.question + "\nChoose an answer!")
+
+        answer = input()
+
+        if answer == question_answer.answer:
+            print("Correct!")
+        else:
+            print("Wrong! Take a shot!")
 
     if random_number == 3:
-        return """
+        print("""
         ###########
         |  *      |
         |    *    |
         |      *  |  
-        ########### """ + games[2]
+        ########### """ + games[2])
 
     if random_number == 4:
-        return """
+        print("""
         ###########
         |  *   *  |
         |         |
         |  *   *  |  
-        ########### """ + games[3]
+        ########### """ + games[3])
 
     if random_number == 5:
-        return """
+        question_answer = random.choice(equations_answers)
+        print("""
         ###########
         |  *   *  |
         |    *    |
         |  *   *  |  
-        ########### """ + games[4] + "\n" + random.choice(equations_answers).question
+        ########### """ + games[4] + "\n" + question_answer.question + "\nChoose an answer!")
+
+        answer = input()
+
+        if answer == question_answer.answer:
+            print("Correct!")
+        else:
+            print("Wrong! Take a shot!")
 
     if random_number == 6:
-        return """
+        print("""
         ###########
         |  *   *  |
         |  *   *  |
         |  *   *  |  
         ###########
-        Random game! """ + roll_dice(random.randint(1,5))
+        Random game! """ + roll_dice(random.randint(1,5)))
         
 
 player_turn()
