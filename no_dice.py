@@ -1,7 +1,12 @@
 import random
+from no_dice_questions import answers
 
-def roll_dice():
-    random_number = random.randint(1, 6)
+class Questions:
+    def __init__(self, question, answer):
+        self.question = question
+        self.answer = answer
+
+def roll_dice(random_number):
     
     games = [
         "You get 1 point! Everyone else has to drink a shot!", 
@@ -25,7 +30,7 @@ def roll_dice():
         |  *      |
         |         |
         |      *  |  
-        ########### """ + games[1]
+        ########### """ + games[1] + "\n" + random.choice(answers).question
 
     if random_number == 3:
         return """
@@ -58,7 +63,7 @@ def roll_dice():
         |  *   *  |
         |  *   *  |  
         ###########
-        Random game! """ + games[random.randint(1, 5)]
+        Random game! """ + roll_dice(random.randint(1,5))
         
 
-print(roll_dice())
+print(roll_dice(random.randint(1, 6)))
