@@ -1,5 +1,5 @@
 import random
-from no_dice_questions import answers
+from no_dice_questions import answers, equations_answers
 
 class Questions:
     def __init__(self, question, answer):
@@ -54,7 +54,7 @@ def roll_dice(random_number):
         |  *   *  |
         |    *    |
         |  *   *  |  
-        ########### """ + games[4]
+        ########### """ + games[4] + "\n" + random.choice(equations_answers).question
 
     if random_number == 6:
         return """
