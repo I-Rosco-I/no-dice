@@ -1,4 +1,5 @@
 import random
+from no_dice_dares import dares
 from no_dice_questions import answers, equations_answers
 
 def player_turn():
@@ -58,7 +59,7 @@ def roll_dice(random_number):
         |  *   *  |
         |         |
         |  *   *  |  
-        ########### """ + games[3])
+        ########### """ + games[3] + "\n" + random.choice(dares))
 
     if random_number == 5:
         question_answer = random.choice(equations_answers)
@@ -83,7 +84,9 @@ def roll_dice(random_number):
         |  *   *  |
         |  *   *  |  
         ###########
-        Random game! """ + roll_dice(random.randint(1,5)))
+        Random game! """)
+
+        roll_dice(random.randint(1,5))
         
 
 player_turn()
