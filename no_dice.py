@@ -2,6 +2,8 @@ import random
 from no_dice_dares import dares
 from no_dice_questions import answers, equations_answers
 
+total_points = 10
+
 def game_startup():
     print("""
         .-----------------. .----------------.   .----------------.  .----------------.  .----------------.  .-----------------.
@@ -16,8 +18,8 @@ def game_startup():
         | '--------------' || '--------------' | | '--------------' || '--------------' || '--------------' || '--------------' |
         '----------------'  '----------------'   '----------------'  '----------------'  '----------------'  '-----------------'
 
-        Take turns to roll the dice and complete the challenges. First player to 10 points wins!
-    """)
+        Take turns to roll the dice and complete the challenges. First player to {} points wins!
+    """.format(total_points))
 
     number_of_players = input("How many people are playing? ")
     players = []
@@ -31,7 +33,7 @@ def player_turn(players):
     game_end = False
 
     for player in players:
-        player_ready = input(player["name"] + " are you ready to roll? y or n: ")
+        player_ready = input("\n" + player["name"] + " are you ready to roll? y or n: ")
 
         if player_ready == "n":
             print("Then take a shot, and play anyway!")
@@ -52,7 +54,7 @@ def roll_dice(random_number, player):
         else:
             player["score"] -= 1
 
-        print(player["name"] + ", your score is now ", player["score"])
+        print("\033[1;32m" + player["name"] + ", your score is now:", player["score"], "\n\x1b[0m")
 
     games = [
         "You get 1 point! Everyone else has to drink a shot!",
@@ -68,7 +70,11 @@ def roll_dice(random_number, player):
         |         |
         |    *    |
         |         |
-        ########### """ + games[0])
+        ###########
+
+    {}
+
+        """.format(games[0]))
         update_score()
 
     if random_number == 2:
@@ -78,9 +84,14 @@ def roll_dice(random_number, player):
         |  *      |
         |         |
         |      *  |
-        ########### """ + games[1] + "\n" + question_answer.question + "\nChoose an answer!")
+        ###########
 
-        answer = input()
+    {}
+
+    {}
+        """.format(games[1], question_answer.question))
+
+        answer = input("Choose an answer! ")
 
         if answer == question_answer.answer:
             print("Correct!")
@@ -94,7 +105,11 @@ def roll_dice(random_number, player):
         |  *      |
         |    *    |
         |      *  |
-        ########### """ + games[2])
+        ###########
+
+    {}
+
+        """.format(games[2]))
         update_score(False)
 
     if random_number == 4:
@@ -103,7 +118,12 @@ def roll_dice(random_number, player):
         |  *   *  |
         |         |
         |  *   *  |
-        ########### """ + games[3] + "\n" + random.choice(dares))
+        ###########
+
+    {}
+
+    {}
+        """.format(games[3], random.choice(dares)))
 
         if input("Did " + player["name"] + " complete the dare? y or n: ") == "y":
             update_score()
@@ -115,9 +135,14 @@ def roll_dice(random_number, player):
         |  *   *  |
         |    *    |
         |  *   *  |
-        ########### """ + games[4] + "\n" + question_answer.question + "\nChoose an answer!")
+        ###########
 
-        answer = input()
+    {}
+
+    {}
+        """.format(games[4], question_answer.question))
+
+        answer = input("Choose an answer! ")
 
         if answer == question_answer.answer:
             print("Correct!")
@@ -132,10 +157,11 @@ def roll_dice(random_number, player):
         |  *   *  |
         |  *   *  |
         ###########
+
         Random game! """)
 
         roll_dice(random.randint(1,5), player)
 
-    return player["score"] == 2
+    return player["score"] == total_points
 
 game_startup()
