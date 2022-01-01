@@ -38,7 +38,7 @@ def player_turn(players):
         if player_ready == "n":
             print("Then take a shot, and play anyway!")
 
-        if roll_dice(random.randint(1, 6), player):
+        if roll_dice(random.randint(1, 6), player, players):
             game_end = True
             break
 
@@ -47,7 +47,7 @@ def player_turn(players):
     else:
         player_turn(players)
 
-def roll_dice(random_number, player):
+def roll_dice(random_number, player, players):
     def update_score(add=True):
         if add:
             player["score"] += 1
@@ -151,6 +151,7 @@ def roll_dice(random_number, player):
             print("Wrong! Take a shot!")
 
     if random_number == 6:
+        random_player = random.choice(players)
         print("""
         ###########
         |  *   *  |
@@ -158,9 +159,9 @@ def roll_dice(random_number, player):
         |  *   *  |
         ###########
 
-        Random game! """)
+        Random game! The player chosen for this game is {}.""".format(random_player["name"]))
 
-        roll_dice(random.randint(1,5), player)
+        roll_dice(random.randint(1,5), random_player, players)
 
     return player["score"] == total_points
 
