@@ -6,7 +6,8 @@ class Question:
 
 questions = [
     "What is the biggest animal in the world?\n\n    a: Blue Whale\n    b: Elephant\n    b: Sperm Whale\n    d: Hamster",
-    "What is the capital of Iceland?\n\n    a: Cardiff\n    b: Reykjavík\n    c: Reykjanesbær\n    d: Garðabær"
+    "What is the capital of Iceland?\n\n    a: Cardiff\n    b: Reykjavík\n    c: Reykjanesbær\n    d: Garðabær",
+    "What year did World War II start?\n\n    a: 1945\n    b: 1939\n    c: 1940\n    d: 1934"
 ]
 
 equations = [
@@ -15,7 +16,8 @@ equations = [
 
 answers = [
     Question(questions[0], "a"),
-    Question(questions[1], "b")
+    Question(questions[1], "b"),
+    Question(questions[2], "b")
 ]
 
 equations_answers = [
